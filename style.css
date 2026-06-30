@@ -18,9 +18,9 @@ header {
     min-height: 100vh;
     padding: 80px 24px;
     text-align: center;
-    background:
-        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.88)),
-        url("images/hero.jpg?v=2");
+background:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.88)),
+    url("./images/hero.jpg?v=2");
     background-size: cover;
     background-position: center;
     display: flex;
