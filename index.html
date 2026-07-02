@@ -229,20 +229,54 @@ gtag('config', 'G-HSGCVE5ZEE');
 
     <div id="imageModal" class="image-modal">
     <span class="modal-close">&times;</span>
+    <button class="modal-prev" type="button">‹</button>
     <img class="modal-image" id="modalImage" src="" alt="">
+    <button class="modal-next" type="button">›</button>
 </div>
 
 <script>
 const modal = document.getElementById("imageModal");
 const modalImage = document.getElementById("modalImage");
 const closeBtn = document.querySelector(".modal-close");
+const prevBtn = document.querySelector(".modal-prev");
+const nextBtn = document.querySelector(".modal-next");
+
+let currentImages = [];
+let currentIndex = 0;
 
 document.querySelectorAll(".gallery-card img, .event-card img").forEach(img => {
     img.addEventListener("click", () => {
+        currentImages = img.dataset.gallery
+            ? img.dataset.gallery.split(",")
+            : [img.getAttribute("src")];
+
+        currentIndex = 0;
         modal.style.display = "flex";
-        modalImage.src = img.src;
-        modalImage.alt = img.alt;
+        showImage(currentIndex);
+
+        const showButtons = currentImages.length > 1;
+        prevBtn.style.display = showButtons ? "block" : "none";
+        nextBtn.style.display = showButtons ? "block" : "none";
     });
+});
+
+function showImage(index) {
+    currentIndex = index;
+
+    if (currentIndex < 0) currentIndex = currentImages.length - 1;
+    if (currentIndex >= currentImages.length) currentIndex = 0;
+
+    modalImage.src = currentImages[currentIndex].trim();
+}
+
+prevBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    showImage(currentIndex - 1);
+});
+
+nextBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    showImage(currentIndex + 1);
 });
 
 closeBtn.addEventListener("click", () => {
