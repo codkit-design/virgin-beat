@@ -237,3 +237,8 @@ footer {
         height: 220px;
     }
 }
+
+.gallery-icon i {
+    color: #d4af37;
+    font-size: 28px;
+}
