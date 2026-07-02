@@ -355,3 +355,49 @@ footer {
 .modal-close:hover {
     color: #d4af37;
 }
+
+.modal-prev,
+.modal-next {
+    position: absolute;
+    top: 50%;
+    z-index: 10001;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(212, 175, 55, 0.8);
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.75);
+    color: #d4af37;
+    font-size: 36px;
+    cursor: pointer;
+}
+
+.modal-prev {
+    left: 24px;
+}
+
+.modal-next {
+    right: 24px;
+}
+
+.modal-prev:hover,
+.modal-next:hover {
+    background: rgba(212, 175, 55, 0.2);
+}
+
+@media (max-width: 600px) {
+    .modal-prev,
+    .modal-next {
+        width: 42px;
+        height: 42px;
+        font-size: 30px;
+    }
+
+    .modal-prev {
+        left: 10px;
+    }
+
+    .modal-next {
+        right: 10px;
+    }
+}
